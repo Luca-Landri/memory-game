@@ -1,4 +1,3 @@
-import './App.css';
 import styled from "styled-components";
 import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
@@ -31,19 +30,26 @@ function App() {
   const [turns, setTurns] = useState(0);
   const [choice1, setChoice1] = useState(null);
   const [choice2, setChoice2] = useState(null);
+
+
+
   //funzione per mischiare le carte
   const shuffleCards = () => {
     const shuffledCards = [...cardImg, ...cardImg];
     shuffledCards.sort(() => Math.random() - 0.5);
-    
     setCards(shuffledCards.map((card) => ({...card, id: Math.random() })));
     setTurns(0);
   }
-  console.log(cards);
+
+
+
   //funzione per prendere una carta selezionata
   const handleChoice = (card) => {
     choice1 ? setChoice2(card) : setChoice1(card);
   }
+
+
+
   //funzione per comparare 2 carte
   useEffect(() => {
     console.log(choice1, choice2);
@@ -59,20 +65,21 @@ function App() {
             }
           })
         });
-        console.log('match');
         reset();
       } else {
-        console.log('no match');
         setTimeout(() => reset(), 800)
       }
     }
   }, [choice1, choice2]);
 
-  //funzione per resettare le carte
+
+
+
+  //funzione per resettare le scelte dell'utente
   const reset = () => {
     setChoice1(null)
     setChoice2(null)
-    setTurns(prevTurns => prevTurns + 1)
+    setTurns(turns + 1)
   }
 
   return (
