@@ -1,26 +1,19 @@
 import './App.css';
 import styled from "styled-components";
 import React, { useState } from 'react';
+import Card from './components/Card';
+import Button from './components/Button';
 
 const Container = styled.div`
   max-width: 100%;
   margin: 40px auto;
 `;
 
-const StartButton = styled.button`
-  background: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  cursor: pointer;
-  border: 2px solid #fff;
-  font-family: 'Fira Code', monospace;
-  color: #fff;
-  :hover {
-    background: #c23866;
-    color: #fff;
-  }
+const CardGrid = styled.div`
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 `;
 
 const cardImg = [
@@ -59,19 +52,12 @@ function App() {
   console.log(cards, turns);
   return (
     <Container>
-      <StartButton onClick={shuffleCards}>
-        Nuova partita
-      </StartButton>
-
-      <div className='card-grid'>
+      <Button text="Nuova Partita" shuffle={shuffleCards} />
+      <CardGrid>
         {cards.map((card) => (
-          <div className='card' key={card.id}>
-            <div>
-              <img className='front' src={card.src} alt='card'/>
-            </div>
-          </div>
+          <Card src={card.src} id={card.id}/>
         ))}
-      </div>
+      </CardGrid>
     </Container>
   )
 }
