@@ -3,6 +3,12 @@ import styled from "styled-components";
 import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
 import Button from './components/Button';
+import cardImg from './components/CardImgs';
+
+const Title = styled.h1`
+  font-family: 'Fira Code', monospace;
+  user-select: none;
+`;
 
 const Container = styled.div`
   max-width: 100%;
@@ -15,27 +21,6 @@ const CardGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
 `;
-
-const cardImg = [
-  {
-    src: "https://cdn.discordapp.com/attachments/707531038360076288/928419003125350430/unknown.png"
-  },
-  {
-    src: "https://cdn.discordapp.com/attachments/707531038360076288/891783318754955334/Immagine_2021-09-26_222703.png"
-  },
-  {
-    src: "https://cdn.discordapp.com/attachments/707531038360076288/830857317464539175/sacchetti.png"
-  },
-  {
-    src: "https://cdn.discordapp.com/attachments/707531038360076288/818394908125167686/unknown.png"
-  },
-  {
-    src: "https://cdn.discordapp.com/attachments/707531038360076288/806793672233320458/unknown.png"
-  },
-  {
-    src: "https://cdn.discordapp.com/attachments/707531038360076288/805855362757820426/unknown.png"
-  }
-]
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -53,14 +38,21 @@ function App() {
 
   const handleChoice = (card) => {
     choice1 ? setChoice2(card) : setChoice1(card);
-    console.log(card + " aoooooo");
   }
 
   useEffect(() => {
-    if (choice1 && choice2) {
-      console.log(choice1, choice2);
-
+    if (choice2) {
       if (choice1 === choice2) {
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.src === choice2) {
+              console.log("Sono entrato nella map")
+              return {...card, matchStatus: true};
+            } else {
+              return card;
+            }
+          })
+        });
         console.log('match');
         reset();
       } else {
@@ -70,6 +62,8 @@ function App() {
     }
   }, [choice1, choice2]);
 
+  console.log(cards);
+
   const reset = () => {
     setChoice1(null)
     setChoice2(null)
@@ -78,6 +72,7 @@ function App() {
 
   return (
     <Container>
+      <Title>PANETTI'S MEMORY CARD</Title>
       <Button text="Nuova Partita" shuffle={shuffleCards} />
       <CardGrid>
         {cards.map((card) => (

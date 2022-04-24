@@ -16,11 +16,16 @@ const StartButton = styled.button`
   }
 `;
 
+const ButtonTitle = styled.span`
+  font-family: 'Fira Code', monospace;
+  user-select: none;
+`;
+
 
 const Button = ({text, shuffle}) => {
     return(
     <StartButton onClick={shuffle}>
-        {text}
+        <ButtonTitle>{text}</ButtonTitle>
     </StartButton>
     )
 }
