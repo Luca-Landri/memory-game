@@ -17,9 +17,13 @@ const Container = styled.div`
 
 const CardGrid = styled.div`
   margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+
 `;
 
 function App() {

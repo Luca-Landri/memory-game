@@ -2,15 +2,23 @@
 import styled from "styled-components";
 
 const CardContainer = styled.div`
+    display: flex;
+    flex-basis: 15%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 
 `;
 
 const FrontImg = styled.img`
-    width: 300px;
+    width: 200px;
 `;
 
 const BackImg = styled.img`
-    width: 300px;
+    width: 200px;
 `;
 
 const Card = ({src, handleChoice, flipped}) => {
