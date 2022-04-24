@@ -6,7 +6,7 @@ const StartButton = styled(motion.button)`
   padding: 6px 12px;
   border-radius: 15px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   cursor: pointer;
   border: 2px solid #fff;
   font-family: 'Fira Code', monospace;
