@@ -1,0 +1,34 @@
+.card .front {
+    transform: rotateY(90deg);
+    position: absolute;
+}
+
+.flipped .front {
+    transform: rotateY(0deg);
+}
+
+.front {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s;
+}
+
+.back {
+    width: 250px;   
+}
+
+@media (min-width: 600px) {
+    .back {
+        width: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .back {
+        width: 100px;
+    }
+}
