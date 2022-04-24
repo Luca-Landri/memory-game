@@ -31,25 +31,27 @@ function App() {
   const [turns, setTurns] = useState(0);
   const [choice1, setChoice1] = useState(null);
   const [choice2, setChoice2] = useState(null);
-
+  //funzione per mischiare le carte
   const shuffleCards = () => {
     const shuffledCards = [...cardImg, ...cardImg];
     shuffledCards.sort(() => Math.random() - 0.5);
-    shuffledCards.map((card) => ({...card, id: Math.random()}));
-    setCards(shuffledCards);
+    
+    setCards(shuffledCards.map((card) => ({...card, id: Math.random() })));
     setTurns(0);
   }
-
+  console.log(cards);
+  //funzione per prendere una carta selezionata
   const handleChoice = (card) => {
     choice1 ? setChoice2(card) : setChoice1(card);
   }
-
+  //funzione per comparare 2 carte
   useEffect(() => {
-    if (choice2) {
-      if (choice1 === choice2) {
+    console.log(choice1, choice2);
+    if (choice1 && choice2) {
+      if (choice1.src === choice2.src) {
         setCards(prevCards => {
           return prevCards.map(card => {
-            if (card.src === choice2) {
+            if (card.src === choice1.src) {
               console.log("Sono entrato nella map")
               return {...card, matchStatus: true};
             } else {
@@ -61,13 +63,12 @@ function App() {
         reset();
       } else {
         console.log('no match');
-        reset();
+        setTimeout(() => reset(), 800)
       }
     }
   }, [choice1, choice2]);
 
-  console.log(cards);
-
+  //funzione per resettare le carte
   const reset = () => {
     setChoice1(null)
     setChoice2(null)
@@ -77,12 +78,12 @@ function App() {
   return (
     <Container>
       <Title>PANETTI'S MEMORY CARD</Title>
-      <Button text="Nuova Partita" shuffle={shuffleCards} />
       <CardGrid>
         {cards.map((card) => (
-          <Card handleChoice={handleChoice} src={card.src} flipped={card === choice1 || card === choice2 || card.matchStatus}/>
+          <Card key={card.id} handleChoice={handleChoice} card={card} flipped={card === choice1 || card === choice2 || card.matchStatus}/>
         ))}
       </CardGrid>
+      <Button text="Nuova Partita" shuffle={shuffleCards} />
     </Container>
   )
 }
