@@ -76,7 +76,7 @@ function App() {
       <Button text="Nuova Partita" shuffle={shuffleCards} />
       <CardGrid>
         {cards.map((card) => (
-          <Card handleChoice={handleChoice} src={card.src} id={card.id}/>
+          <Card handleChoice={handleChoice} src={card.src} flipped={card === choice1 || card === choice2 || card.matchStatus}/>
         ))}
       </CardGrid>
     </Container>

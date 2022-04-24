@@ -13,7 +13,7 @@ const BackImg = styled.img`
     width: 300px;
 `;
 
-const Card = ({src, handleChoice}) => {
+const Card = ({src, handleChoice, flipped}) => {
 
     const handleClick = () => {
         handleChoice(src);
@@ -23,8 +23,12 @@ const Card = ({src, handleChoice}) => {
     return(
         <CardContainer>
             <div>
-              <FrontImg src={src} alt='card front'/>
-              <BackImg onClick={handleClick} src="https://i.imgur.com/0V81Ft7.png" alt="card cover"/>
+                {
+                flipped ? 
+                <FrontImg src={src} alt='card front'/>                
+                : 
+                <BackImg onClick={handleClick} src="https://i.imgur.com/0V81Ft7.png" alt="card cover"/>
+                }
             </div>
         </CardContainer>
     );
