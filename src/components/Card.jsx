@@ -5,12 +5,26 @@ const CardContainer = styled.div`
 
 `;
 
-const Card = ({id, src}) => {
+const FrontImg = styled.img`
+    width: 300px;
+`;
+
+const BackImg = styled.img`
+    width: 300px;
+`;
+
+const Card = ({src, handleChoice}) => {
+
+    const handleClick = () => {
+        handleChoice(src);
+    }
+
+
     return(
-        <CardContainer className='card' key={id}>
+        <CardContainer>
             <div>
-              <img className='front' src={src} alt='card front'/>
-              <img className='back' src="https://i.imgur.com/0V81Ft7.png" alt="card cover"/>
+              <FrontImg src={src} alt='card front'/>
+              <BackImg onClick={handleClick} src="https://i.imgur.com/0V81Ft7.png" alt="card cover"/>
             </div>
         </CardContainer>
     );

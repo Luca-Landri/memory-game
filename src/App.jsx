@@ -1,6 +1,6 @@
 import './App.css';
 import styled from "styled-components";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './components/Card';
 import Button from './components/Button';
 
@@ -40,6 +40,8 @@ const cardImg = [
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [choice1, setChoice1] = useState(null);
+  const [choice2, setChoice2] = useState(null);
 
   const shuffleCards = () => {
     const shuffledCards = [...cardImg, ...cardImg];
@@ -49,17 +51,42 @@ function App() {
     setTurns(0);
   }
 
-  console.log(cards, turns);
+  const handleChoice = (card) => {
+    choice1 ? setChoice2(card) : setChoice1(card);
+    console.log(card + " aoooooo");
+  }
+
+  useEffect(() => {
+    if (choice1 && choice2) {
+      console.log(choice1, choice2);
+
+      if (choice1 === choice2) {
+        console.log('match');
+        reset();
+      } else {
+        console.log('no match');
+        reset();
+      }
+    }
+  }, [choice1, choice2]);
+
+  const reset = () => {
+    setChoice1(null)
+    setChoice2(null)
+    setTurns(prevTurns => prevTurns + 1)
+  }
+
   return (
     <Container>
       <Button text="Nuova Partita" shuffle={shuffleCards} />
       <CardGrid>
         {cards.map((card) => (
-          <Card src={card.src} id={card.id}/>
+          <Card handleChoice={handleChoice} src={card.src} id={card.id}/>
         ))}
       </CardGrid>
     </Container>
   )
 }
 
-export default App
+export default App;
+
