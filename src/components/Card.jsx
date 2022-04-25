@@ -28,6 +28,7 @@ const FrontImg = styled.img`
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    transform: ${props => props.flipped.rotate};
 
     @media (min-width: 1400px) {
         width: 200px !important;
@@ -52,10 +53,16 @@ const FrontImg = styled.img`
        height: 100px;
        object-fit: cover;
     }
+    transition: all ease-in 0.2s;
+    position: absolute;
+    transition-delay: 0.2s;
 
 `;
 
 const BackImg = styled.img`
+    transition: all ease-in 0.2s;
+    transform: ${props => props.flipped.rotate};
+    transition-delay: 0s;
 
     @media (min-width: 1400px) {
         width: 200px !important;
@@ -76,6 +83,7 @@ const BackImg = styled.img`
        width: 75px;
        height: 100px;
     }
+    transition-delay: 0.2s;
 
 
 `;
@@ -87,11 +95,12 @@ const Card = ({card, handleChoice, flipped}) => {
         handleChoice(card);
     }
 
+
     return(
         <CardContainer className="card" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
             <div className={flipped ? "flipped" : ""}>
-                <FrontImg className="front" src={card.src} alt='card front'/>                
-                <BackImg className="back" onClick={handleClick} src="https://i.imgur.com/x7L9qpC.png" alt="card cover"/>
+                <FrontImg className="front" flipped={{rotate: flipped ? "rotateY(0deg)" : "rotateY(90deg)"}} src={card.src} alt='card front'/>                
+                <BackImg className="back" flipped={{rotate: flipped ? "rotateY(90deg)" : "rotateY(0deg)"}} onClick={handleClick} src="https://cdn.discordapp.com/attachments/753249225709453363/968250517862113290/x7L9qpC.png" alt="card cover"/>
             </div>
         </CardContainer>
     );
