@@ -23,9 +23,62 @@ const CardContainer = styled(motion.div)`
     }
 `;
 
-const FrontImg = styled.img``;
+const FrontImg = styled.img`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 
-const BackImg = styled.img``;
+    @media (min-width: 1400px) {
+        width: 200px !important;
+        height: 300px !important;
+        object-fit: cover;
+    }
+
+    @media (min-width: 1200px) {
+        width: 150px;
+        height: 225px;
+        object-fit: cover;
+    }
+
+    @media (max-width: 1200px) {
+        width: 100px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    @media (max-width: 600px) {
+       width: 75px;
+       height: 100px;
+       object-fit: cover;
+    }
+
+`;
+
+const BackImg = styled.img`
+
+    @media (min-width: 1400px) {
+        width: 200px !important;
+        height: 300px !important;
+    }
+
+    @media (min-width: 1200px) {
+        width: 150px;
+        height: 225px;
+    }
+
+    @media (max-width: 1200px) {
+        width: 100px;
+        height: 150px;
+    }
+
+    @media (max-width: 600px) {
+       width: 75px;
+       height: 100px;
+    }
+
+
+`;
 
 
 const Card = ({card, handleChoice, flipped}) => {
