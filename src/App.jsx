@@ -27,9 +27,9 @@ const CardGrid = styled.div`
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [card1, setCard1] = useState(null);
+  const [card2, setCard2] = useState(null);
   const [turns, setTurns] = useState(0);
-  const [choice1, setChoice1] = useState(null);
-  const [choice2, setChoice2] = useState(null);
 
 
 
@@ -45,20 +45,19 @@ function App() {
 
   //funzione per prendere una carta selezionata
   const handleChoice = (card) => {
-    choice1 ? setChoice2(card) : setChoice1(card);
+    card1 ? setCard2(card) : setCard1(card);
   }
 
 
 
   //funzione per comparare 2 carte
   useEffect(() => {
-    console.log(choice1, choice2);
-    if (choice1 && choice2) {
-      if (choice1.src === choice2.src) {
+    console.log(card1, card2);
+    if (card2) {
+      if (card1.src === card2.src) {
         setCards(prevCards => {
           return prevCards.map(card => {
-            if (card.src === choice1.src) {
-              console.log("Sono entrato nella map")
+            if (card.src === card1.src) {
               return {...card, matchStatus: true};
             } else {
               return card;
@@ -70,15 +69,15 @@ function App() {
         setTimeout(() => reset(), 800)
       }
     }
-  }, [choice1, choice2]);
+  }, [card1, card2]);
 
 
 
 
   //funzione per resettare le scelte dell'utente
   const reset = () => {
-    setChoice1(null)
-    setChoice2(null)
+    setCard1(null)
+    setCard2(null)
     setTurns(turns + 1)
   }
 
@@ -87,7 +86,7 @@ function App() {
       <Title>PANETTI'S MEMORY CARD</Title>
       <CardGrid>
         {cards.map((card) => (
-          <Card key={card.id} handleChoice={handleChoice} card={card} flipped={card === choice1 || card === choice2 || card.matchStatus}/>
+          <Card key={card.id} handleChoice={handleChoice} card={card} flipped={card === card1 || card === card2 || card.matchStatus}/>
         ))}
       </CardGrid>
       <Button text="Nuova Partita" shuffle={shuffleCards} />
