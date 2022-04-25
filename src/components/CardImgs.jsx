@@ -1,7 +1,7 @@
 const cardImg = [
   {
     src: "https://cdn.discordapp.com/attachments/707531038360076288/928419003125350430/unknown.png",
-    matchStatus: false
+    matchStatus: false,
   },
   {
     src: "https://cdn.discordapp.com/attachments/707531038360076288/891783318754955334/Immagine_2021-09-26_222703.png",
