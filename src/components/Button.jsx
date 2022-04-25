@@ -8,6 +8,9 @@ const StartButton = styled(motion.button)`
   font-weight: bold;
   font-size: 1.7rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 2px solid #fff;
   font-family: 'Fira Code', monospace;
   color: #fff;
