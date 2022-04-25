@@ -38,6 +38,8 @@ function App() {
     const shuffledCards = [...cardImg, ...cardImg];
     shuffledCards.sort(() => Math.random() - 0.5);
     setCards(shuffledCards.map((card) => ({...card, id: Math.random() })));
+    setCard1(null);
+    setCard2(null);
     setTurns(0);
   }
 
@@ -71,8 +73,15 @@ function App() {
     }
   }, [card1, card2]);
 
+  useEffect(() => {
+    if (cards.every(card => card.matchStatus)) {
+      alert(`You won in ${turns} turns!`);
+    }
+  }, [cards, turns]);
 
-
+  useEffect(() => {
+    shuffleCards();
+  }, []);
 
   //funzione per resettare le scelte dell'utente
   const reset = () => {
@@ -90,6 +99,7 @@ function App() {
         ))}
       </CardGrid>
       <Button text="Nuova Partita" shuffle={shuffleCards} />
+      <p>Turns: {turns}</p>
     </Container>
   )
 }
