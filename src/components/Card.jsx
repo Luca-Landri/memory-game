@@ -23,6 +23,10 @@ const CardContainer = styled(motion.div)`
     }
 `;
 
+const FrontImg = styled.img``;
+
+const BackImg = styled.img``;
+
 
 const Card = ({card, handleChoice, flipped}) => {
 
@@ -33,8 +37,8 @@ const Card = ({card, handleChoice, flipped}) => {
     return(
         <CardContainer className="card" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
             <div className={flipped ? "flipped" : ""}>
-                <img className="front" src={card.src} alt='card front'/>                
-                <img className="back" onClick={handleClick} src="https://i.imgur.com/x7L9qpC.png" alt="card cover"/>
+                <FrontImg className="front" src={card.src} alt='card front'/>                
+                <BackImg className="back" onClick={handleClick} src="https://i.imgur.com/x7L9qpC.png" alt="card cover"/>
             </div>
         </CardContainer>
     );
