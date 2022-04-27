@@ -55,7 +55,7 @@ const FrontImg = styled.img`
     }
     transition: all ease-in 0.2s;
     position: absolute;
-    transition-delay: 0.2s;
+    transition-delay: 0.4s;
 
 `;
 
