@@ -127,7 +127,13 @@ const OnlyButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 100%;
+  @media (max-width: 600px) {
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
 `
 
 const OfLogo = styled.img`
