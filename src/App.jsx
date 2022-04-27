@@ -6,10 +6,19 @@ import { motion } from "framer-motion";
 
 const BrainImg = styled.img`
   width: 100px;
+
+  @media (max-width: 600px) {
+    width: 75px;
+  }
 `
 
 const Title = styled.h1`
   font-family: 'Fira Code', monospace;
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
+    width: 80%;
+  }
 `
 
 const TitleContainer = styled.div`
@@ -17,51 +26,66 @@ const TitleContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const StartGame = styled.button`
-  margin: 20px;
-  font-family: 'Fira Code', monospace;
-  font-size: 1.5rem;
   background: none;
   padding: 6px 12px;
   border-radius: 15px;
   font-weight: bold;
+  font-size: 1.7rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 4px solid #fff;
-
+  font-family: 'Fira Code', monospace;
+  color: #fff;
+  margin-top: 15px;
   :hover {
     background: #FAFFAF;
+    color: black;
   }
 `
 
 const GameLink = styled(Link)`
   text-decoration: none;
   color: #fff;
-
+  user-select: none;
   :hover {
     color: black;
   }
+
 `
 
 const buttonVariants = {
   hover: {
-    scale: 1.1,
-    textShadow: "0px 0px 8px rgb(255,255,255)",
-    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    y: 30,
     transition: {
-      duration: 0.3,
-      yoyo: 5
+      duration: 0.8,
+      yoyo: Infinity,
     }
   }
 }
 
 const CardImg = styled(motion.img)`
-  width: 100px;
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   flex-basis: 10%;
+  
+  @media (max-width: 600px) {
+    width: 100px;
+    height: 100px;
+  }
+  
 `
 
 const ImgContainer = styled.div`
@@ -70,6 +94,8 @@ const ImgContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
 `
 
 const PageContainer = styled.div`
@@ -77,7 +103,40 @@ const PageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 30px;
   height: 100vh;
+`
+
+const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 20%;
+`
+
+const OnlyButton = styled(motion.button)`
+  background: none;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.7rem;
+  cursor: pointer;
+  border: 4px solid #fff;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`
+
+const OfLogo = styled.img`
+  width: 50px;
+`
+
+const OfLink = styled.a`
+  text-decoration: none;
+  color: #fff;
 `
 
 
@@ -96,9 +155,15 @@ const App = () => {
 
       <ImgContainer className="circle-container">
         {cardImg.map((card) => (
-          <CardImg variants={buttonVariants} whileHover="hover" src={card.src} alt="" />
+          <CardImg variants={buttonVariants} animate="hover" src={card.src} alt="" />
         ))}
       </ImgContainer>
+      <Footer>
+        <OnlyButton whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
+          <OfLogo src="https://seeklogo.com/images/O/onlyfans-logo-C7DEFE44F5-seeklogo.com.png"/>
+          <OfLink href="https://www.tiktok.com/@ti.frammento.i.vbucks/video/7088278441799208198?lang=it-IT&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=7047643680815728134">OnlyFans Sacchetti</OfLink>
+        </OnlyButton>
+      </Footer>
     </PageContainer>
   );
 }
