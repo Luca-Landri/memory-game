@@ -68,6 +68,7 @@ function Game() {
   //funzione per prendere una carta selezionata
   const handleChoice = (card) => {
     card1 ? setCard2(card) : setCard1(card);
+    console.log(cards);
   }
 
 
@@ -93,10 +94,14 @@ function Game() {
   }, [card1, card2]);
 
   useEffect(() => {
-    if (cards.every(card => card.matchStatus)) {
+    
+    console.log("merluzzo impanato");
+    console.log(cards);
+    if (cards.every(card => card.matchStatus === true) && cards.length == 12) {
+      console.log(cards);
       alert(`You won in ${turns} turns!`);
     }
-  }, [cards, turns]);
+  }, [turns]);
 
   useEffect(() => {
     shuffleCards();
