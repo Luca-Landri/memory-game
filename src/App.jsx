@@ -35,7 +35,7 @@ const TitleContainer = styled.div`
   }
 `
 
-const StartGame = styled.button`
+const StartGame = styled(motion.button)`
   background: none;
   padding: 6px 12px;
   border-radius: 15px;
@@ -51,11 +51,10 @@ const StartGame = styled.button`
   margin-top: 15px;
   :hover {
     background: #FAFFAF;
-    color: black;
   }
 `
 
-const GameLink = styled(Link)`
+const GameLink = styled(motion(Link))`
   text-decoration: none;
   color: #fff;
   user-select: none;
@@ -63,7 +62,7 @@ const GameLink = styled(Link)`
     color: black;
   }
 
-`
+`;
 
 const buttonVariants = {
   hover: {
@@ -140,7 +139,7 @@ const OfLogo = styled.img`
   width: 50px;
 `
 
-const OfLink = styled.a`
+const OfLink = styled(Link)`
   text-decoration: none;
   color: #fff;
 `
@@ -155,8 +154,8 @@ const App = () => {
         <BrainImg src="https://ouch-cdn2.icons8.com/CHhb3FTOvZJCefuu0C-zGGj7kIn73pLgaAW-uX1OU8k/rs:fit:1384:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvODcy/L2EzYmIwMjliLTM1/OTktNDI4Mi04MzAy/LTg1MGY3MWQ3ZTUw/ZS5zdmc.png" alt="" />
       </TitleContainer>
 
-      <StartGame>
-        <GameLink whileHover={{scale: 1.1}} to="/game">Start Game</GameLink>
+      <StartGame whileHover={{scale: 1.1}}>
+        <GameLink to="/game">Start Game</GameLink>
       </StartGame>
 
       <ImgContainer className="circle-container">
@@ -167,7 +166,7 @@ const App = () => {
       <Footer>
         <OnlyButton whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
           <OfLogo src="https://seeklogo.com/images/O/onlyfans-logo-C7DEFE44F5-seeklogo.com.png"/>
-          <OfLink href="https://www.tiktok.com/@ti.frammento.i.vbucks/video/7088278441799208198?lang=it-IT&is_copy_url=0&is_from_webapp=v1&sender_device=pc&sender_web_id=7047643680815728134">OnlyFans Sacchetti</OfLink>
+          <OfLink to="/OfSac">OnlyFans Sacchetti</OfLink>
         </OnlyButton>
       </Footer>
     </PageContainer>
