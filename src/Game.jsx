@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Button from './components/Button';
 import cardImg from './components/CardImgs';
 
+
 const Title = styled.h1`
   font-family: 'Fira Code', monospace;
   user-select: none;
@@ -116,7 +117,7 @@ function Game() {
 
   return (
     <Container>
-      <Title>PANETTI'S MEMORY CARD</Title>
+      <Title>MEMORLANDRI</Title>
       <CardGrid>
         {cards.map((card) => (
           <Card key={card.id} handleChoice={handleChoice} card={card} flipped={card === card1 || card === card2 || card.matchStatus}/>
