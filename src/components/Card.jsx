@@ -103,7 +103,7 @@ const Card = ({card, handleChoice, flipped}) => {
 
 
     return(
-        <CardContainer className="card" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
+        <CardContainer className="card" whileHover={{y: -10}} whileTap={{scale: 0.9}}>
             <div className={flipped ? "flipped" : ""}>
                 <FrontImg className="front" flipped={{rotate: flipped ? "rotateY(0deg)" : "rotateY(90deg)"}} src={card.src} alt='card front'/>                
                 <BackImg className="back" flipped={{rotate: flipped ? "rotateY(90deg)" : "rotateY(0deg)"}} onClick={handleClick} src="https://cdn.discordapp.com/attachments/753249225709453363/968250517862113290/x7L9qpC.png" alt="card cover"/>

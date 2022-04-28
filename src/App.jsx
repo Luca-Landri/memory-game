@@ -167,7 +167,7 @@ const App = () => {
         <OnlyButton whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}>
           <OfLogo src="https://seeklogo.com/images/O/onlyfans-logo-C7DEFE44F5-seeklogo.com.png"/>
           <OfLink to="/OfSac">OnlyFans Sacchetti</OfLink>
-        </OnlyButton>
+        </OnlyButton>     
       </Footer>
     </PageContainer>
   );
