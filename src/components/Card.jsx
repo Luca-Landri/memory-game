@@ -1,6 +1,8 @@
 import "./Card.css";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import useSound from 'use-sound';
+import sacchetti from '../audio/sacchetti.mp3';
 
 const CardContainer = styled(motion.div)`
     position: relative;
@@ -56,7 +58,6 @@ const FrontImg = styled.img`
     transition: all ease-in 0.2s;
     position: absolute;
     transition-delay: 0.4s;
-
 `;
 
 const BackImg = styled.img`
@@ -90,9 +91,14 @@ const BackImg = styled.img`
 
 
 const Card = ({card, handleChoice, flipped}) => {
+    const [play] = useSound(sacchetti);
+
 
     const handleClick = () => {
         handleChoice(card);
+        if (card.src == "https://cdn.discordapp.com/attachments/707531038360076288/830857317464539175/sacchetti.png") {
+            play();
+        }
     }
 
 
