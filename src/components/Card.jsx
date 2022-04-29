@@ -55,15 +55,13 @@ const FrontImg = styled.img`
        height: 100px;
        object-fit: cover;
     }
-    transition: all ease-in 0.2s;
     position: absolute;
-    transition-delay: 0.4s;
+    transition: ${props => props.flipped.delay};
 `;
 
 const BackImg = styled.img`
-    transition: all ease-in 0.2s;
     transform: ${props => props.flipped.rotate};
-    transition-delay: 0s;
+    transition: ${props => props.flipped.delay};
 
     @media (min-width: 1400px) {
         width: 200px !important;
@@ -84,15 +82,11 @@ const BackImg = styled.img`
        width: 75px;
        height: 100px;
     }
-    transition-delay: 0.2s;
-
-
 `;
 
 
 const Card = ({card, handleChoice, flipped}) => {
     const [play] = useSound(sacchetti);
-
 
     const handleClick = () => {
         handleChoice(card);
@@ -100,13 +94,12 @@ const Card = ({card, handleChoice, flipped}) => {
             play();
         }
     }
-
-
+    
     return(
         <CardContainer className="card" whileHover={{y: -10}} whileTap={{scale: 0.9}}>
             <div className={flipped ? "flipped" : ""}>
-                <FrontImg className="front" flipped={{rotate: flipped ? "rotateY(0deg)" : "rotateY(90deg)"}} src={card.src} alt='card front'/>                
-                <BackImg className="back" flipped={{rotate: flipped ? "rotateY(90deg)" : "rotateY(0deg)"}} onClick={handleClick} src="https://cdn.discordapp.com/attachments/753249225709453363/968250517862113290/x7L9qpC.png" alt="card cover"/>
+                <FrontImg className="front" flipped={{rotate: flipped ? "rotateY(0deg)" : "rotateY(90deg)", delay: flipped ? "all 0.2s ease-in-out" : "all 0s ease-in-out"}} src={card.src} alt='card front'/>                
+                <BackImg className="back" flipped={{rotate: flipped ? "rotateY(90deg)" : "rotateY(0deg)", delay: flipped ? "all 0s ease-in-out" : "all 0.2s ease-in-out"}} onClick={handleClick} src="https://cdn.discordapp.com/attachments/753249225709453363/968250517862113290/x7L9qpC.png" alt="card cover"/>
             </div>
         </CardContainer>
     );

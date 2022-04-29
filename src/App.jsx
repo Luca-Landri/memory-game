@@ -65,7 +65,12 @@ const GameLink = styled(motion(Link))`
 `;
 
 const buttonVariants = {
-  hover: {
+  hidden: {
+    opacity: 0,
+    y: "-100vh",
+  },
+  visible: {
+    opacity: 1,
     y: 30,
     transition: {
       duration: 0.8,
@@ -87,7 +92,7 @@ const CardImg = styled(motion.img)`
   
 `
 
-const ImgContainer = styled.div`
+const ImgContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -96,6 +101,36 @@ const ImgContainer = styled.div`
   gap: 30px;
   margin-top: 50px;
 `
+
+const containerVariants = {
+  hidden: { 
+    opacity: 0, 
+    x: '100vw',
+    transition: {
+      staggerChildren: 0.5,
+    } 
+  },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { 
+      type: 'spring',
+      mass: 0.4,
+      damping: 8,
+      staggerChildren: 0.4,
+      when: "beforeChildren",
+    }
+  },
+};
+
+const childVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  }
+}
 
 const PageContainer = styled.div`
   display: flex;
@@ -158,9 +193,9 @@ const App = () => {
         <GameLink to="/game">Start Game</GameLink>
       </StartGame>
 
-      <ImgContainer className="circle-container">
+      <ImgContainer variants={containerVariants} initial="hidden" animate="visible" exit="exit" className="circle-container">
         {cardImg.map((card) => (
-          <CardImg variants={buttonVariants} animate="hover" src={card.src} alt="" />
+          <CardImg variants={childVariants} src={card.src} alt="" />
         ))}
       </ImgContainer>
       <Footer>
