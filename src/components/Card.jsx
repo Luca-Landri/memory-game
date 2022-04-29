@@ -88,15 +88,13 @@ const BackImg = styled.img`
 const Card = ({card, handleChoice, flipped}) => {
     const [play] = useSound(sacchetti);
 
-
     const handleClick = () => {
         handleChoice(card);
         if (card.src == "https://cdn.discordapp.com/attachments/707531038360076288/830857317464539175/sacchetti.png") {
             play();
         }
     }
-
-
+    
     return(
         <CardContainer className="card" whileHover={{y: -10}} whileTap={{scale: 0.9}}>
             <div className={flipped ? "flipped" : ""}>
