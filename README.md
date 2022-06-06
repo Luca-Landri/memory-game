@@ -5,6 +5,7 @@
 
 ## DESCRIPTION
 > In this school project it was required to create a functioning memory with a flipping animation
+> P.S the teacher got me 10 for this :slightly_smiling_face:
 
 ## STACK :space_invader:
 This is an only front-end app with a JS framework
@@ -15,9 +16,9 @@ This project is hosted on [Vercel](https://memory-game-rust.vercel.app).
 > This site updates every time i commit changes
 
 ## HOW TO RUN THE PROJ :red_car:
-For run this project we need after forking the repo:
+For run this project we need after cloned the repo:
    
-1. Install the dependencies
+1. Install the dependencies of the proj
    - ```npm i```
 
 2. Run the project
