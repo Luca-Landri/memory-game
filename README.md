@@ -19,8 +19,12 @@ This project is hosted on [Vercel](https://memory-game-rust.vercel.app).
 For run this project we need after cloned the repo:
    
 1. Install the dependencies of the proj
-   - ```npm i```
+```sh
+npm i
+```
 
 2. Run the project
-   - ```npm run dev```
+```sh
+npm run dev
+```
 
